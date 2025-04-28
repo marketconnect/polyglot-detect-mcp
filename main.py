@@ -6,7 +6,7 @@ from langdetect import DetectorFactory
 import numpy as np
 
 # Create FastMCP instance
-mcp = FastMCP('fa')
+mcp = FastMCP('polyglot-detect')
 
 # Set seed for consistent results with langdetect
 DetectorFactory.seed = 0
@@ -68,6 +68,7 @@ def detect_language_gcld3(text: str) -> tuple[str, float, bool]:
         
     return result.language, result.probability, result.is_reliable
 
+@mcp.tool()
 def detect_language(text: str) -> str:
     """
     Detect language using FastText, GCLD3, and langdetect.
@@ -106,10 +107,6 @@ def detect_language(text: str) -> str:
 """
     return markdown_result
 
-def main():
-    text = "Bosh kotibining maxsus vakili Najat Maala Toshkentga qilgan tashrifi"
-    results = detect_language(text)
-    print(results)
-
 if __name__ == "__main__":
-    main()
+    mcp.run(transport="stdio")
+
