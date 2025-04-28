@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=42", "wheel", "pybind11>=2.6.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "polyglot-detect-mcp"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fasttext==0.9.2",
+    "gcld3>=3.0.13",
+    "mcp[cli]>=1.6.0",
+    "numpy>=1.24.0,<2.0.0",  # Pin to numpy 1.x
+    "pybind11>=2.6.0",
+    "langdetect>=1.0.9",
+]
